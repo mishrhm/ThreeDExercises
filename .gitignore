@@ -1,2 +1,51 @@
-node_modules/
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
+# Diagnostic reports
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Dependency directories
+node_modules/
+jspm_packages/
+web_modules/
+
+# Vite / Build outputs
+dist/
+dist-ssr/
+*.local
+
+# SvelteKit / Nuxt / Next.js / VitePress cache outputs (if applicable)
+.svelte-kit/
+.nuxt/
+.next/
+.vuepress/.cache
+.vitepress/cache
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Local environment files (Contains sensitive API keys)
+.env
+.env.local
+.env.*.local
+
+# TypeScript / Type checking cache
+*.tsbuildinfo
+.eslintcache
+
+# Operating System files
+.DS_Store
+Thumbs.db
