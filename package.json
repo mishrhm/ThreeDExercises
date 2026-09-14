@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "build:css": "tailwindcss -i ./styles.css -o ./output.css",
+    "watch:css": "tailwindcss -i ./styles.css -o ./output.css --watch",
+    "dev": "npx vite"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "@tailwindcss/vite": "^4.3.3",
+    "tailwindcss": "^4.3.3",
+    "three": "^0.185.1"
+  },
+  "devDependencies": {
+    "vite": "^8.2.2"
+  }
+}
