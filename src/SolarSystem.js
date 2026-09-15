@@ -7,6 +7,7 @@ import { CONFIG } from "./config/constants.js";
 import { Sun } from "./entities/Sun.js"; // Import Sun
 import { Earth } from "./entities/Earth.js";
 import { Moon } from "./entities/Moon.js";
+import { createGalaxyBG } from "./systems/BG.js";
 
 export class SolarSystem {
   constructor(canvas) {
@@ -25,6 +26,8 @@ export class SolarSystem {
     this.controls.enableDamping = true;
 
     setupResizer(this.camera, this.renderer);
+
+    createGalaxyBG(this.scene);
 
     // Save lights reference if you want to animate pointLight intensity with the Sun
     const { pointLight } = createLights(this.scene);
