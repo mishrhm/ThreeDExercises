@@ -43,8 +43,8 @@ earthTexture.colorSpace = THREE.SRGBColorSpace;
 const sunMat = new THREE.MeshStandardMaterial({
   map: sunTexture,
   emissiveMap: sunTexture,
-  emissive: new THREE.Color(0xffffff),
-  emissiveIntensity: 1,
+  emissive: new THREE.Color(0xffffaa),
+  emissiveIntensity: 1.4,
 });
 const earthMat = new THREE.MeshStandardMaterial({
   map: earthTexture,
@@ -59,7 +59,7 @@ const moonMat = new THREE.MeshStandardMaterial({
 });
 
 const sun = new THREE.Mesh(sphereGeo, sunMat);
-sun.scale.setScalar(5);
+sun.scale.setScalar(6);
 
 const earth = new THREE.Mesh(sphereGeo, earthMat);
 earth.scale.setScalar(2);
@@ -73,7 +73,7 @@ earth.add(moon);
 scene.add(sun, earth);
 
 // 5. Lighting Setup
-const pointLight = new THREE.PointLight(0xffbbaa, 20000, 0, 2); // Color, intensity, distance, decay
+const pointLight = new THREE.PointLight(0xffffee, 8000, 0, 2); // Color, intensity, distance, decay
 // pointLight.position.set(15, 1, 1);
 
 const ambLight = new THREE.AmbientLight(0xffffff, 0);
@@ -100,12 +100,16 @@ let previousTime = 0;
 
 renderer.setAnimationLoop((currentTime) => {
   // Delta time ensures rotation speed is frame-rate independent
-  const elapsedTime = currentTime * 0.001;
+  const elapsedTime = currentTime * 0.0001;
 
   earth.rotation.y += 0.04;
 
-  earth.position.x = Math.sin(elapsedTime) * 20;
-  earth.position.z = Math.cos(elapsedTime) * 20;
+  earth.position.x = Math.sin(elapsedTime) * 25;
+  earth.position.z = Math.cos(elapsedTime) * 25;
+
+  let sunBurnIntensityFactor = Math.sin(elapsedTime * 8);
+  sunMat.emissiveIntensity = 1 + Math.abs(sunBurnIntensityFactor);
+  pointLight.intensity += 2 * sunBurnIntensityFactor;
 
   controls.update(); // Required when enableDamping is true
   renderer.render(scene, camera);
